@@ -13,7 +13,7 @@ var router http.Handler
 
 func init() {
 	bookRepo := repository.NewMemoryBookRepository()
-	tokenRepo := repository.NewMemoryTokenRepository(1 * time.Hour)
+	tokenRepo := repository.NewStatelessTokenRepository(1 * time.Hour)
 
 	bookSvc := service.NewBookService(bookRepo)
 	authSvc := service.NewAuthService(tokenRepo)

@@ -13,4 +13,5 @@ type BookRepository interface {
 type TokenRepository interface {
 	Store(token string)
 	Exists(token string) bool
+	Generate() string // returns signed token if stateless, empty if in-memory
 }

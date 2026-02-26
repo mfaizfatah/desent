@@ -24,6 +24,10 @@ func (r *MemoryTokenRepository) Store(token string) {
 	r.tokens[token] = time.Now().Add(r.ttl)
 }
 
+func (r *MemoryTokenRepository) Generate() string {
+	return ""
+}
+
 func (r *MemoryTokenRepository) Exists(token string) bool {
 	r.mu.RLock()
 	defer r.mu.RUnlock()

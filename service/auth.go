@@ -23,10 +23,13 @@ func (s *AuthService) GenerateToken(username, password string) (string, error) {
 	if username != "admin" || password != "password" {
 		return "", domain.ErrInvalidCredentials
 	}
-	bytes := make([]byte, 32)
-	rand.Read(bytes)
-	token := hex.EncodeToString(bytes)
-	s.repo.Store(token)
+	token := s.repo.Generate()
+	if token == "" {
+		bytes := make([]byte, 32)
+		rand.Read(bytes)
+		token = hex.EncodeToString(bytes)
+		s.repo.Store(token)
+	}
 	return token, nil
 }
 
