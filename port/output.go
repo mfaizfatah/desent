@@ -1,6 +1,6 @@
 package port
 
-import "desent/internal/domain"
+import "desent/domain"
 
 type BookRepository interface {
 	Save(book domain.Book) domain.Book

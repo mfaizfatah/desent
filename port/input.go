@@ -1,6 +1,6 @@
 package port
 
-import "desent/internal/domain"
+import "desent/domain"
 
 type BookService interface {
 	Create(book domain.Book) (domain.Book, error)

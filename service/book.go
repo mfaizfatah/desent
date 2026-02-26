@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"desent/internal/domain"
-	"desent/internal/port"
+	"desent/domain"
+	"desent/port"
 )
 
 type BookService struct {

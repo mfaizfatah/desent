@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"desent/internal/port"
+	"desent/port"
 )
 
 type AuthHandler struct {

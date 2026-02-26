@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strings"
 
-	"desent/internal/domain"
-	"desent/internal/port"
+	"desent/domain"
+	"desent/port"
 )
 
 func NewRouter(bookSvc port.BookService, authSvc port.AuthService) http.Handler {

@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"sync"
 
-	"desent/internal/domain"
+	"desent/domain"
 )
 
 type MemoryBookRepository struct {

@@ -6,9 +6,9 @@ import (
 	"os"
 	"time"
 
-	"desent/internal/adapter/handler"
-	"desent/internal/adapter/repository"
-	"desent/internal/service"
+	"desent/adapter/handler"
+	"desent/adapter/repository"
+	"desent/service"
 )
 
 func main() {

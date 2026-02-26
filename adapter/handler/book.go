@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"desent/internal/domain"
-	"desent/internal/port"
+	"desent/domain"
+	"desent/port"
 )
 
 type BookHandler struct {

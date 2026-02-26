@@ -4,8 +4,8 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 
-	"desent/internal/domain"
-	"desent/internal/port"
+	"desent/domain"
+	"desent/port"
 )
 
 type AuthService struct {

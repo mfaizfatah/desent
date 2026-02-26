@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"time"
 
-	httphandler "desent/internal/adapter/handler"
-	"desent/internal/adapter/repository"
-	"desent/internal/service"
+	httphandler "desent/adapter/handler"
+	"desent/adapter/repository"
+	"desent/service"
 )
 
 var router http.Handler
