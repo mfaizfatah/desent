@@ -1,7 +1,6 @@
 package service
 
 import (
-	"math"
 	"sort"
 	"strconv"
 	"strings"
@@ -59,7 +58,6 @@ func (s *BookService) List(filter domain.BookFilter) (any, error) {
 		}
 
 		total := len(books)
-		totalPages := int(math.Ceil(float64(total) / float64(limit)))
 		start := (page - 1) * limit
 		end := start + limit
 		if start > total {
@@ -69,13 +67,7 @@ func (s *BookService) List(filter domain.BookFilter) (any, error) {
 			end = total
 		}
 
-		return domain.PaginatedBooks{
-			Data:  books[start:end],
-			Total: total,
-			Page:  page,
-			Limit: limit,
-			Pages: totalPages,
-		}, nil
+		return books[start:end], nil
 	}
 
 	return books, nil
