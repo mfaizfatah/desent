@@ -2,6 +2,7 @@ package handler
 
 import (
 	"encoding/json"
+	"io"
 	"net/http"
 )
 
@@ -12,10 +13,16 @@ func (h *PingHandler) Ping(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *PingHandler) Echo(w http.ResponseWriter, r *http.Request) {
-	var body map[string]any
-	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+	body, err := io.ReadAll(r.Body)
+	if err != nil {
 		writeError(w, http.StatusBadRequest, "invalid JSON")
 		return
 	}
-	writeJSON(w, http.StatusOK, body)
+	if !json.Valid(body) {
+		writeError(w, http.StatusBadRequest, "invalid JSON")
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(body)
 }
