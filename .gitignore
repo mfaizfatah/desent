@@ -1,0 +1,5 @@
+desent
+*.exe
+*.test
+*.out
+.env
