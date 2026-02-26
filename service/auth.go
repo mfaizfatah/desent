@@ -20,6 +20,9 @@ func (s *AuthService) GenerateToken(username, password string) (string, error) {
 	if username == "" || password == "" {
 		return "", domain.ErrCredentials
 	}
+	if username != "admin" || password != "password" {
+		return "", domain.ErrInvalidCredentials
+	}
 	bytes := make([]byte, 32)
 	rand.Read(bytes)
 	token := hex.EncodeToString(bytes)

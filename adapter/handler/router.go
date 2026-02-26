@@ -61,6 +61,8 @@ func mapDomainError(err error) int {
 		errors.Is(err, domain.ErrInvalidJSON),
 		errors.Is(err, domain.ErrCredentials):
 		return http.StatusBadRequest
+	case errors.Is(err, domain.ErrInvalidCredentials):
+		return http.StatusUnauthorized
 	default:
 		return http.StatusInternalServerError
 	}
