@@ -41,14 +41,11 @@ func (h *BookHandler) GetByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *BookHandler) List(w http.ResponseWriter, r *http.Request) {
-	token := extractToken(r)
-	if token == "" {
-		writeError(w, http.StatusUnauthorized, "invalid or expired token")
-		return
-	}
-	if err := h.authSvc.ValidateToken(token); err != nil {
-		writeError(w, http.StatusUnauthorized, err.Error())
-		return
+	if token := extractToken(r); token != "" {
+		if err := h.authSvc.ValidateToken(token); err != nil {
+			writeError(w, http.StatusUnauthorized, err.Error())
+			return
+		}
 	}
 
 	filter := domain.BookFilter{
